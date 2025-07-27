@@ -22,22 +22,27 @@ while True:
         # Draw rectangle around face
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
-        # Define ROI (region of interest)
+
+        # crop the region (region of interest)(slicing)
+        # सिर्फ grayscale image का face region
         roi_gray = gray[y:y + h, x:x + w]
+
+        # original colored frame का face region
         roi_color = frame[y:y + h, x:x + w]
 
-        # Detect eyes inside the face
+
+        # Detect eyes inside the face(esliye hm gray color ko parameter me dale hai )
         eyes = eye_cascade.detectMultiScale(roi_gray, 1.1, 5)
         if len(eyes) > 0:
             cv2.putText(frame, "Eyes Detected", (x, y - 30), cv2.FONT_HERSHEY_COMPLEX, 0.6, (255, 0, 0), 2)
 
         # Detect smile inside the face
-        smiles = smile_cascade.detectMultiScale(roi_gray, 1.3, 15)
+        smiles = smile_cascade.detectMultiScale(roi_gray, 1.6, 15)
         if len(smiles) > 0:
             cv2.putText(frame, "Smile Detected", (x, y - 10), cv2.FONT_HERSHEY_COMPLEX, 0.6, (0, 255, 255), 2)
 
     # Show the result
-    cv2.imshow("Smart Face Detector", frame)
+    cv2.imshow("Smart Face Detection", frame)
 
     # Exit on 'q' key
     if cv2.waitKey(1) & 0xFF == ord('q'):

@@ -9,7 +9,7 @@ while True:
 
     gray=cv2.cvtColor(Frame,cv2.COLOR_BGR2GRAY)
 
-    '''detectmultiscale()=scan and detect object face'''
+    '''detectMultiScale():scan and detect object face'''
     detect_faces=face_cascade.detectMultiScale(gray,1.1,5)
 
     for (x,y,w,h) in detect_faces:
