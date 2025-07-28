@@ -37,7 +37,7 @@ while True:
             cv2.putText(frame, "Eyes Detected", (x, y - 30), cv2.FONT_HERSHEY_COMPLEX, 0.6, (255, 0, 0), 2)
 
         # Detect smile inside the face
-        smiles = smile_cascade.detectMultiScale(roi_gray, 1.6, 15)
+        smiles = smile_cascade.detectMultiScale(roi_gray, 1.1, 20)
         if len(smiles) > 0:
             cv2.putText(frame, "Smile Detected", (x, y - 10), cv2.FONT_HERSHEY_COMPLEX, 0.6, (0, 255, 255), 2)
 
